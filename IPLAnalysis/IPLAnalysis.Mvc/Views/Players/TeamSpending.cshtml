@@ -1,0 +1,32 @@
+@model IEnumerable<IPLAnalysis.Mvc.Controllers.TeamSpendingViewModel>
+
+@{
+    ViewData["Title"] = "Team Spending Analysis";
+}
+
+<div class="container mt-5">
+    <h1 class="display-5 fw-bold mb-4">Total Spending by Team</h1>
+    
+    <div class="row">
+        @foreach (var team in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                    <div class="card-body bg-white">
+                        <h5 class="card-title text-uppercase text-muted small fw-bold">@team.TeamName</h5>
+                        <p class="display-6 text-primary mb-0">₹ @team.TotalSpent Cr</p>
+                        <p class="text-muted small">Total Players: @team.PlayerCount</p>
+                    </div>
+                    <div class="progress" style="height: 5px;">
+                        @{
+                            var percentage = (team.TotalSpent / Model.Max(t => t.TotalSpent)) * 100;
+                        }
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: @percentage%"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>

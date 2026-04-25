@@ -1,0 +1,26 @@
+@model IEnumerable<IPLAnalysis.Mvc.Controllers.RoleStatsViewModel>
+
+@{
+    ViewData["Title"] = "Role Statistics";
+}
+
+<div class="container mt-5">
+    <h1 class="display-5 fw-bold mb-4 text-info">Market Analysis by Role</h1>
+    
+    <div class="row">
+        @foreach (var stat in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 bg-info text-white shadow">
+                    <div class="card-body">
+                        <h6 class="text-uppercase opacity-75">@stat.Role</h6>
+                        <h3 class="fw-bold">₹ @stat.AveragePrice.ToString("F2") Cr</h3>
+                        <p class="mb-0 small">Avg. Price for @stat.PlayerCount players</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>

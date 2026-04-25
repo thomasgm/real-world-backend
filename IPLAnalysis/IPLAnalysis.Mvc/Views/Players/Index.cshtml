@@ -1,0 +1,46 @@
+@model IEnumerable<IPLAnalysis.Mvc.Models.Player>
+
+@{
+    ViewData["Title"] = "IPL Players Analysis";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4 fw-bold text-primary">IPL Player Insights</h1>
+        <div>
+            <a asp-action="TeamSpending" class="btn btn-outline-primary me-2">Team Spending</a>
+            <a asp-action="TopEarners" class="btn btn-outline-success me-2">Top Earners</a>
+            <a asp-action="RoleStats" class="btn btn-outline-info">Role Stats</a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 bg-light">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Team</th>
+                            <th>Role</th>
+                            <th>Type</th>
+                            <th>Price (Cr)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold">@player.PlayerName</td>
+                                <td><span class="badge bg-secondary">@player.Team</span></td>
+                                <td>@player.Role</td>
+                                <td>@player.Type</td>
+                                <td class="text-success fw-bold">₹ @player.Price_in_cr Cr</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
