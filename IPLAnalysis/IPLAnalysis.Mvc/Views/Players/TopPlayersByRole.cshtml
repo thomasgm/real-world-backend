@@ -1,0 +1,27 @@
+@using IPLAnalysis.Mvc.Controllers
+@model IEnumerable<TopPlayerPerRoleViewModel>
+
+<div class="container mt-5">
+    <h2 class="fw-bold text-center mb-5">🏆 Market Leaders by Role</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm text-center">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h5 class="mb-0 text-uppercase small ls-wide">@item.Role</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title fw-bold text-primary mb-1">@item.PlayerName</h3>
+                        <p class="text-muted mb-3"><i class="bi bi-shield-fill"></i> @item.Team</p>
+                        <div class="bg-light p-3 rounded-pill d-inline-block">
+                            <span class="h4 fw-bold text-success mb-0">₹ @item.Price.ToString("F2") Cr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<p><a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a></p>

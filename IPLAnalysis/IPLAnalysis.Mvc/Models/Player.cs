@@ -34,5 +34,6 @@ namespace IPLAnalysis.Mvc.Models
 
         [Required]
         public required string Team { get; set; } // Correspondente à coluna "Team"
+
     }
 }

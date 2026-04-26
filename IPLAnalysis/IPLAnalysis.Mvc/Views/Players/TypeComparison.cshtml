@@ -1,0 +1,28 @@
+@using IPLAnalysis.Mvc.Controllers
+@model IEnumerable<PlayerTypeComparisonViewModel>
+
+<div class="container mt-5">
+    <h2 class="text-center fw-bold mb-5">Market Value: Indian vs Overseas</h2>
+
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            var isIndian = item.PlayerType == "Indian";
+            <div class="col-md-5 mb-4">
+                <div class="card border-0 shadow-lg @(isIndian ? "bg-primary" : "bg-dark") text-white text-center p-4">
+                    <div class="card-body">
+                        <i class="bi @(isIndian ? "bi-person-fill" : "bi-globe") mb-3" style="font-size: 3rem;"></i>
+                        <h4 class="text-uppercase opacity-75">@item.PlayerType Players</h4>
+                        <h1 class="display-3 fw-bold">₹ @item.AvgPrice.ToString("F2")</h1>
+                        <p class="fs-5">Average Price (Cr)</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <p class="text-muted">Analysis based on current auction and retention prices.</p>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to Insights</a>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+@model IEnumerable<IPLAnalysis.Mvc.Controllers.PriceCategoryDistributionViewModel>
+
+@{
+    ViewData["Title"] = "Price Category Distribution";
+}
+
+<div class="container mt-5">
+    <h1 class="display-5 fw-bold mb-3 text-info">Price Category Distribution</h1>
+    
+    <div class="row">
+        @foreach (var stat in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 bg-info text-white shadow">
+                    <div class="card-body">
+                        <h6 class="text-uppercase opacity-75">@stat.Team</h6>
+                        <h3 class="fw-bold">@stat.PriceCategory</h3>
+                        <p class="mb-0 small">Number of players: @stat.PlayerCount</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>

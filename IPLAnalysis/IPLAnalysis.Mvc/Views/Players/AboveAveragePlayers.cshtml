@@ -1,0 +1,38 @@
+@using IPLAnalysis.Mvc.Controllers
+@model IEnumerable<AboveAveragePlayerViewModel>
+
+<div class="container mt-5">
+    <h2 class="fw-bold mb-4">⭐ Team Stars (Above Average Earnings)</h2>
+    <p class="text-muted">Players earning more than their team's average market value.</p>
+    
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle bg-white">
+            <thead class="table-primary">
+                <tr>
+                    <th>Player</th>
+                    <th>Team</th>
+                    <th class="text-end">Player Price</th>
+                    <th class="text-end">Team Average</th>
+                    <th class="text-end text-success">Surplus</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.PlayerName</td>
+                        <td><span class="badge bg-light text-dark border">@item.Team</span></td>
+                        <td class="text-end fw-bold">₹ @item.Price.ToString("F2") Cr</td>
+                        <td class="text-end text-muted small">₹ @item.TeamAverage.ToString("F2") Cr</td>
+                        <td class="text-end text-success fw-bold">
+                            + ₹ @item.Surplus.ToString("F2") Cr
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><a asp-action="Index" class="btn btn-outline-secondary">Back to List</a></p>

@@ -1,0 +1,51 @@
+@using IPLAnalysis.Mvc.Controllers
+@model IEnumerable<ContributionPercentageViewModel>
+
+@{
+    ViewData["Title"] = "Player Contribution";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5 fw-bold text-primary">Financial Contribution (%)</h1>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+
+    <div class="card shadow border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Player</th>
+                            <th>Team</th>
+                            <th>Price (Cr)</th>
+                            <th style="width: 30%">Contribution Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold">@item.PlayerName</td>
+                                <td><span class="badge bg-light text-dark border">@item.Team</span></td>
+                                <td>₹ @item.Price_in_cr Cr</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress flex-grow-1 me-3" style="height: 10px;">
+                                            <div class="progress-bar bg-success" role="progressbar" 
+                                                 style="width: @item.ContributionPercentage.ToString("F0")%" 
+                                                 aria-valuenow="@item.ContributionPercentage" aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                        <span class="fw-bold text-success">@item.ContributionPercentage.ToString("F2")%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
