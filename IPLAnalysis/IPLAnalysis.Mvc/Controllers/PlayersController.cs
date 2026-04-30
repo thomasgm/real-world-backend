@@ -75,6 +75,12 @@ ORDER BY Price_in_cr DESC*/
             .Where(p => p.Role == "All-rounder")
             .OrderByDescending(p => p.Price_in_cr)
             .Take(3)
+            .Select(p => new TopAllRoundersViewModel
+            {
+                PlayerName = p.PlayerName,
+                Team = p.Team,
+                Price_in_cr = p.Price_in_cr
+            })
             .ToListAsync();
 
         return View(topAllRounders);
@@ -107,7 +113,12 @@ WHERE i.Price_in_cr = c.MaxPrice*/
                 maxPricesByTeam,
                 player => new { player.Team, player.Price_in_cr },
                 max => new { max.Team, Price_in_cr = max.MaxPrice },
-                (player, max) => player)
+                (player, max) => new HighestPricedPerTeamViewModel
+                {
+                    Team = player.Team,
+                    PlayerName = player.PlayerName,
+                    Price_in_cr = player.Price_in_cr
+                })
             .ToListAsync();
 
         return View(highestPriced);
@@ -346,13 +357,7 @@ WHERE Price_in_cr = (
         // 2. SelectMany para "achatar" a lista de volta
         var result = players
             .GroupBy(p => p.Role)
-            .SelectMany(g => {
-                // Encontramos qual é o preço máximo desse grupo (posição)
-                var maxPrice = g.Max(p => p.Price_in_cr);
-                
-                // Retornamos TODOS os jogadores que têm esse preço máximo
-                return g.Where(p => p.Price_in_cr == maxPrice);
-            })
+            .Select(g => g.OrderByDescending(p => p.Price_in_cr).First())
             .Select(p => new TopPlayerPerRoleViewModel
             {
                 PlayerName = p.PlayerName,
