@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/CricketStatsPro/">
+    <Project Path="CricketStatsPro/CricketStatsPro.Mvc/CricketStatsPro.Mvc.csproj" />
+    <Project Path="CricketStatsPro/CricketStatsPro.Tests/CricketStatsPro.Tests.csproj" />
+  </Folder>
   <Folder Name="/IPLAnalysis/">
     <Project Path="IPLAnalysis/IPLAnalysis.MVc/IPLAnalysis.Mvc.csproj" />
     <Project Path="IPLAnalysis/IPLAnalysis.Tests/IPLAnalysis.Tests.csproj" />
