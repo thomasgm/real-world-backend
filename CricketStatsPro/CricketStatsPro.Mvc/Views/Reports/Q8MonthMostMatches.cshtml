@@ -1,0 +1,19 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.MonthMatchesResult>
+@{ ViewData["Title"] = "Q8: Most Matches in Month"; }
+
+<div class="card">
+  <h5 class="card-header">Q8: Matches per Month (@ViewBag.Year)</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-hover">
+      <thead><tr><th>Month</th><th>Matches Played</th></tr></thead>
+      <tbody class="table-border-bottom-0">
+          @foreach (var item in Model) {
+              <tr>
+                  <td><strong>@item.MonthName @item.Year</strong></td>
+                  <td><span class="badge bg-label-primary">@item.MatchesPlayed</span></td>
+              </tr>
+          }
+      </tbody>
+    </table>
+  </div>
+</div>

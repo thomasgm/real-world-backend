@@ -1,0 +1,20 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.GroundSuccessResult>
+@{ ViewData["Title"] = "Q10: Most Successful Team at Ground"; }
+
+<div class="card">
+  <h5 class="card-header">Q10: Most Successful Team per Ground</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-hover">
+      <thead><tr><th>Ground</th><th>Most Successful Team</th><th>Wins</th></tr></thead>
+      <tbody class="table-border-bottom-0">
+          @foreach (var item in Model) {
+              <tr>
+                  <td><i class="icon-base bx bx-map-pin text-primary me-2"></i> <strong>@item.Ground</strong></td>
+                  <td><span class="badge bg-label-success">@item.MostSuccessfulTeam</span></td>
+                  <td>@item.Wins</td>
+              </tr>
+          }
+      </tbody>
+    </table>
+  </div>
+</div>

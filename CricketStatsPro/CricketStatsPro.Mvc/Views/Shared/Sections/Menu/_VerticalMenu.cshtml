@@ -68,6 +68,16 @@
       </a>
     </li>
 
+    <!-- Reports -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Advanced Analytics</span>
+    </li>
+    <li class='menu-item@(currentPage != null && currentPage.StartsWith("/Reports") ? " active open" : "")'>
+      <a asp-controller="Reports" asp-action="Index" class="menu-link">
+        <i class="menu-icon icon-base bx bx-pie-chart-alt-2"></i>
+        <div class="text-truncate">Executive Dashboard</div>
+      </a>
+    </li>
   </ul>
 
 </aside>

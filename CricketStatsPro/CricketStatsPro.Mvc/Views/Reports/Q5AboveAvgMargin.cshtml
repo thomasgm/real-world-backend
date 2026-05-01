@@ -1,0 +1,21 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.T20Match>
+@{ ViewData["Title"] = "Q5: Above Average Margin"; }
+
+<div class="card">
+  <h5 class="card-header">Matches Won by More Than Average Margin (@Math.Round(ViewBag.AverageMargin ?? 0.0, 2) runs)</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-hover">
+      <thead><tr><th>Date</th><th>Teams</th><th>Winner</th><th>Margin</th></tr></thead>
+      <tbody class="table-border-bottom-0">
+          @foreach (var match in Model) {
+              <tr>
+                  <td>@match.MatchDate.ToString("dd/MM/yyyy")</td>
+                  <td>@match.Team1 vs @match.Team2</td>
+                  <td><span class="badge bg-label-success">@match.Winner</span></td>
+                  <td><strong class="text-primary">@match.Margin</strong></td>
+              </tr>
+          }
+      </tbody>
+    </table>
+  </div>
+</div>

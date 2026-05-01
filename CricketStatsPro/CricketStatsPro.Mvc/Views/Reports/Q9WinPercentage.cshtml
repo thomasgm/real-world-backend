@@ -1,0 +1,28 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.WinPercentageResult>
+@{ ViewData["Title"] = "Q9: Win Percentage (2024)"; }
+
+<div class="card">
+  <h5 class="card-header">Q9: Team Win Percentages in 2024</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-hover">
+      <thead><tr><th>Team</th><th>Matches Played</th><th>Wins</th><th>Win %</th></tr></thead>
+      <tbody class="table-border-bottom-0">
+          @foreach (var item in Model) {
+              <tr>
+                  <td><strong>@item.Team</strong></td>
+                  <td>@item.MatchesPlayed</td>
+                  <td>@item.Wins</td>
+                  <td>
+                      <div class="d-flex align-items-center gap-3">
+                          <div class="progress w-100" style="height: 8px;">
+                              <div class="progress-bar bg-primary" role="progressbar" style="width: @item.WinPercentage%" aria-valuenow="@item.WinPercentage" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <small>@item.WinPercentage%</small>
+                      </div>
+                  </td>
+              </tr>
+          }
+      </tbody>
+    </table>
+  </div>
+</div>

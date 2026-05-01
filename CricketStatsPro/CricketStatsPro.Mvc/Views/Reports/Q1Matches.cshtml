@@ -1,0 +1,24 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.T20Match>
+@{ ViewData["Title"] = "Q1: Matches in 2024"; }
+
+<div class="card">
+  <h5 class="card-header">Q1: Matches between @ViewBag.Team1 and @ViewBag.Team2 in @ViewBag.Year</h5>
+  <div class="card-body">
+    <form method="get" class="mb-4 row g-3">
+        <div class="col-auto"><input type="text" name="team1" value="@ViewBag.Team1" class="form-control" /></div>
+        <div class="col-auto"><span class="form-control-plaintext">VS</span></div>
+        <div class="col-auto"><input type="text" name="team2" value="@ViewBag.Team2" class="form-control" /></div>
+        <div class="col-auto"><button type="submit" class="btn btn-primary">Filter</button></div>
+    </form>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-bordered">
+            <thead><tr><th>Date</th><th>Teams</th><th>Winner</th><th>Margin</th></tr></thead>
+            <tbody>
+                @foreach(var match in Model) {
+                    <tr><td>@match.MatchDate.ToString("dd/MM/yyyy")</td><td>@match.Team1 vs @match.Team2</td><td>@match.Winner</td><td>@match.Margin</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>

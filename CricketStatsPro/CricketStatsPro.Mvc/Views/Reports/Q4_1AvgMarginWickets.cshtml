@@ -1,0 +1,15 @@
+@model CricketStatsPro.Mvc.Models.AverageMarginResult
+@{ ViewData["Title"] = "Q4.1: Average Margin (Wickets)"; }
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card text-center">
+            <div class="card-header bg-info text-white">Highest Average Winning Margin (Wickets)</div>
+            <div class="card-body mt-4">
+                <i class="icon-base bx bx-target-lock text-info" style="font-size: 4rem;"></i>
+                <h3 class="card-title mt-3">@Model?.Team</h3>
+                <h4 class="text-muted">@Math.Round(Model?.AverageMargin ?? 0, 2) wickets</h4>
+            </div>
+        </div>
+    </div>
+</div>

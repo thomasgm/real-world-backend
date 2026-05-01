@@ -1,0 +1,31 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.HeadToHeadAggregate>
+@{ ViewData["Title"] = "Q7: Head-to-Head Aggregate"; }
+
+<div class="card">
+  <h5 class="card-header">Q7: Head-to-Head Record</h5>
+  <div class="card-body">
+    <form method="get" class="mb-4 row g-3">
+        <div class="col-auto"><input type="text" name="teamA" value="@ViewBag.TeamA" class="form-control" /></div>
+        <div class="col-auto"><span class="form-control-plaintext">VS</span></div>
+        <div class="col-auto"><input type="text" name="teamB" value="@ViewBag.TeamB" class="form-control" /></div>
+        <div class="col-auto"><button type="submit" class="btn btn-primary">Analyze</button></div>
+    </form>
+    
+    <div class="row">
+        @if (!Model.Any()) {
+            <p>No matches found between these teams.</p>
+        } else {
+            foreach(var item in Model) {
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-label-info text-center">
+                        <div class="card-body">
+                            <h4 class="card-title text-info">@item.Winner</h4>
+                            <h2 class="mb-0">@item.MatchesWon Wins</h2>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+  </div>
+</div>
