@@ -1,0 +1,27 @@
+@model IEnumerable<CricketStatsPro.Mvc.Controllers.GroundViewModel>
+
+@{
+    ViewData["Title"] = "Ground Popularity";
+}
+
+<div class="row">
+    @foreach (var item in Model) {
+    <div class="col-md-6 col-lg-4 mb-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between mb-4">
+                    <div class="avatar flex-shrink-0">
+                        <span class="avatar-initial rounded bg-label-success"><i class="icon-base bx bx-map-pin"></i></span>
+                    </div>
+                    <a asp-controller="Matches" asp-action="Index" asp-route-ground="@item.GroundName" class="btn btn-sm btn-outline-primary" title="View Matches">
+                        <i class="icon-base bx bx-link-external me-1"></i> Matches
+                    </a>
+                </div>
+                <h5 class="card-title mb-1">@item.GroundName</h5>
+                <h3 class="mb-3 text-primary">@item.MatchCount</h3>
+                <small class="text-muted">Total Matches Hosted</small>
+            </div>
+        </div>
+    </div>
+    }
+</div>

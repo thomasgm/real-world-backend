@@ -14,9 +14,17 @@ public class MatchesController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? ground = null)
     {
-        return View(await _context.Matches.ToListAsync());
+        ViewBag.SelectedGround = ground;
+        var query = _context.Matches.AsQueryable();
+        
+        if (!string.IsNullOrEmpty(ground))
+        {
+            query = query.Where(m => m.Ground == ground);
+        }
+        
+        return View(await query.ToListAsync());
     }
 
     // 1. Head to Head analysis

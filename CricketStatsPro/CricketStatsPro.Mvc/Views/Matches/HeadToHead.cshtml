@@ -1,0 +1,56 @@
+@model CricketStatsPro.Mvc.Controllers.HeadToHeadViewModel
+
+@{
+    ViewData["Title"] = "Head to Head";
+}
+
+<div class="row mb-6 justify-content-center">
+  <div class="col-md-8 col-lg-6 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-4">Head-to-Head Analysis</h5>
+        
+        <form method="get" class="mb-5">
+            <div class="row g-2 justify-content-center">
+                <div class="col-5">
+                    <input type="text" name="team1" class="form-control" value="@Model.Team1" placeholder="Team 1" />
+                </div>
+                <div class="col-auto d-flex align-items-center">
+                    <span class="text-muted">VS</span>
+                </div>
+                <div class="col-5">
+                    <input type="text" name="team2" class="form-control" value="@Model.Team2" placeholder="Team 2" />
+                </div>
+                <div class="col-12 mt-3 text-center">
+                    <button type="submit" class="btn btn-primary"><i class="icon-base bx bx-search me-1"></i> Analyze</button>
+                </div>
+            </div>
+        </form>
+
+        <hr class="mb-4" />
+        
+        <h6 class="card-subtitle text-muted text-center mb-4">Total Matches Played: @Model.TotalMatches</h6>
+        
+        <div class="d-flex justify-content-around align-items-center mb-4">
+            <div class="d-flex flex-column align-items-center">
+                <div class="avatar avatar-xl mb-2" style="width: 80px; height: 80px;">
+                    <span class="avatar-initial rounded-circle bg-label-primary fs-2">@(string.IsNullOrEmpty(Model.Team1) ? "?" : Model.Team1.Substring(0, 1))</span>
+                </div>
+                <h5 class="mb-1 text-primary">@Model.Team1</h5>
+                <h3 class="mb-0">@Model.Team1Wins</h3>
+                <small class="text-muted">Wins</small>
+            </div>
+            
+            <div class="d-flex flex-column align-items-center">
+                <div class="avatar avatar-xl mb-2" style="width: 80px; height: 80px;">
+                    <span class="avatar-initial rounded-circle bg-label-info fs-2">@(string.IsNullOrEmpty(Model.Team2) ? "?" : Model.Team2.Substring(0, 1))</span>
+                </div>
+                <h5 class="mb-1 text-info">@Model.Team2</h5>
+                <h3 class="mb-0">@Model.Team2Wins</h3>
+                <small class="text-muted">Wins</small>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

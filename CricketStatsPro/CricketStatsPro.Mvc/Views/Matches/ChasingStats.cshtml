@@ -1,0 +1,50 @@
+@model IEnumerable<CricketStatsPro.Mvc.Controllers.ChasingViewModel>
+
+@{
+    ViewData["Title"] = "Chasing Statistics";
+}
+
+<div class="card">
+  <h5 class="card-header">Teams Performance While Chasing (Winning by Wickets)</h5>
+  <div class="table-responsive text-nowrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Wins While Chasing</th>
+          <th>Performance</th>
+        </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+        @{
+            int maxWins = Model.Any() ? Model.Max(m => m.WinsWhileChasing) : 1;
+            if (maxWins == 0) maxWins = 1;
+        }
+        @foreach (var item in Model) {
+            int percentage = (int)Math.Round((double)item.WinsWhileChasing / maxWins * 100);
+        <tr>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="avatar avatar-sm me-3">
+                <span class="avatar-initial rounded-circle bg-label-warning"><i class="icon-base bx bx-flag"></i></span>
+              </div>
+              <span class="fw-medium">@item.TeamName</span>
+            </div>
+          </td>
+          <td>
+              <h6 class="mb-0">@item.WinsWhileChasing</h6>
+          </td>
+          <td>
+            <div class="d-flex align-items-center gap-3">
+                <div class="progress w-100" style="height: 8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: @percentage%" aria-valuenow="@percentage" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <small>@percentage%</small>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

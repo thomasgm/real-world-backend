@@ -1,58 +1,41 @@
+@model IEnumerable<CricketStatsPro.Mvc.Models.T20Match>
+
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "All Matches";
 }
 
-<div class="row">
-  <div class="col-xxl-8 mb-6 order-0">
-    <div class="card">
-      <div class="d-flex align-items-start row">
-        <div class="col-sm-7">
-          <div class="card-body">
-            <h5 class="card-title text-primary mb-3">Welcome to CricketStatsPro! 🎉</h5>
-            <p class="mb-6">Analyze T20 cricket matches, view player stats, head-to-head records, chasing performances, and more.</p>
-
-            <a asp-controller="Matches" asp-action="Index" class="btn btn-sm btn-outline-primary">View All Matches</a>
-          </div>
-        </div>
-        <div class="col-sm-5 text-center text-sm-left">
-          <div class="card-body pb-0 px-0 px-md-6">
-            <img src="~/img/illustrations/man-with-laptop.png" height="175" alt="View Badge User" />
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">
+        @(string.IsNullOrEmpty(ViewBag.SelectedGround) ? "All T20 Matches" : $"T20 Matches Hosted at {ViewBag.SelectedGround}")
+    </h5>
+    @if (!string.IsNullOrEmpty(ViewBag.SelectedGround))
+    {
+        <a asp-controller="Matches" asp-action="Index" class="btn btn-sm btn-outline-secondary">Clear Filter</a>
+    }
   </div>
-  
-  <div class="col-xxl-4 col-lg-12 col-md-4 order-1">
-    <div class="row">
-      <div class="col-lg-6 col-md-12 col-6 mb-6">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="card-title d-flex align-items-start justify-content-between mb-4">
-              <div class="avatar flex-shrink-0">
-                <img src="~/img/icons/unicons/chart-success.png" alt="chart success" class="rounded" />
-              </div>
-            </div>
-            <p class="mb-1">Total Matches</p>
-            <h4 class="card-title mb-3">4,230</h4>
-            <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i> +28.14%</small>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12 col-6 mb-6">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="card-title d-flex align-items-start justify-content-between mb-4">
-              <div class="avatar flex-shrink-0">
-                <img src="~/img/icons/unicons/wallet-info.png" alt="wallet info" class="rounded" />
-              </div>
-            </div>
-            <p class="mb-1">Active Players</p>
-            <h4 class="card-title mb-3">1,245</h4>
-            <small class="text-success fw-medium"><i class="icon-base bx bx-up-arrow-alt"></i> +12%</small>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="table-responsive text-nowrap">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Teams</th>
+          <th>Ground</th>
+          <th>Winner</th>
+          <th>Margin</th>
+        </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+        @foreach (var item in Model) {
+        <tr>
+          <td><i class="icon-base bx bx-calendar text-primary me-2"></i> <strong>@(DateTime.TryParse(item.MatchDate.ToString("dd/MM/yyyy"), out var d) ? d.ToString("dd/MM/yyyy") : item.MatchDate)</strong></td>
+          <td>@item.Team1 vs @item.Team2</td>
+          <td>@item.Ground</td>
+          <td><span class="badge bg-label-success me-1">@item.Winner</span></td>
+          <td>@item.Margin</td>
+        </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </div>
