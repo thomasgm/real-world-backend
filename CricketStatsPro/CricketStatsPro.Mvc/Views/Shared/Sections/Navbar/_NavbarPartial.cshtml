@@ -1,0 +1,33 @@
+@* ! Brand demo (display only for navbar-full and hide on below xl) *@
+@if (ViewData["navbarFull"] != null)
+{
+<div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
+  <a asp-controller="Home" asp-action="Index" class="app-brand-link gap-2">
+      <span class="app-brand-logo demo">
+        <i class='bx bx-cricket-ball text-primary' style='font-size: 1.75rem;'></i>
+      </span>
+      <span class="app-brand-text demo menu-text fw-bold text-heading">CricketStatsPro</span>
+    </a>
+
+    @* ! Display menu close icon only for horizontal-menu with navbar-full *@
+    @if (Convert.ToBoolean(@TempData.Peek("menuHorizontal")).ToString() == "True")
+    {
+      <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none">
+        <i class="icon-base bx bx-chevron-left d-flex align-items-center justify-content-center"></i>
+      </a>
+    }
+  </div>
+}
+
+@* ! Not required for layout-without-menu *@
+@if (ViewData["navbarHideToggle"] == null)
+{
+  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
+    <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
+      <i class="icon-base bx bx-menu bx-md"></i>
+    </a>
+  </div>
+}
+
+
+

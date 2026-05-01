@@ -1,0 +1,77 @@
+@{
+  TempData.Keep();
+  string? currentPage = ViewContext.HttpContext.Request.Path;
+}
+
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+  <div class='app-brand demo @((@ViewData["navbarFull"] != null && Convert.ToBoolean(@ViewData["navbarFull"])) ? "d-xl-none" : "")'>
+    <a asp-controller="Home" asp-action="Index" class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <i class='bx bx-cricket-ball text-primary' style='font-size: 1.75rem;'></i>
+      </span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">CricketStatsPro</span>
+    </a>
+
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+      <i class="icon-base bx bx-chevron-left d-block d-xl-none align-middle"></i>
+    </a>
+  </div>
+
+  <div class="menu-divider mt-0"></div>
+  <div class="menu-inner-shadow"></div>
+
+  <ul class="menu-inner py-1">
+    <!-- Home -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Home</span>
+    </li>
+    
+    <li class='menu-item@(currentPage == "/" || currentPage == "/Home/Index" ? " active" : "")'>
+      <a asp-controller="Home" asp-action="Index" class="menu-link">
+        <i class="menu-icon icon-base bx bx-home-circle"></i>
+        <div class="text-truncate">Dashboard</div>
+      </a>
+    </li>
+    <li class='menu-item@(currentPage == "/Home/Privacy" ? " active" : "")'>
+      <a asp-controller="Home" asp-action="Privacy" class="menu-link">
+        <i class="menu-icon icon-base bx bx-shield-quarter"></i>
+        <div class="text-truncate">Privacy Policy</div>
+      </a>
+    </li>
+
+    <!-- Statistics -->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Statistics & Analysis</span>
+    </li>
+    
+    <li class='menu-item@(currentPage == "/Matches" || currentPage == "/Matches/Index" ? " active" : "")'>
+      <a asp-controller="Matches" asp-action="Index" class="menu-link">
+        <i class="menu-icon icon-base bx bx-table"></i>
+        <div class="text-truncate">All Matches</div>
+      </a>
+    </li>
+    <li class='menu-item@(currentPage == "/Matches/HeadToHead" ? " active" : "")'>
+      <a asp-controller="Matches" asp-action="HeadToHead" class="menu-link">
+        <i class="menu-icon icon-base bx bx-git-compare"></i>
+        <div class="text-truncate">Head to Head</div>
+      </a>
+    </li>
+    <li class='menu-item@(currentPage == "/Matches/ChasingStats" ? " active" : "")'>
+      <a asp-controller="Matches" asp-action="ChasingStats" class="menu-link">
+        <i class="menu-icon icon-base bx bx-line-chart"></i>
+        <div class="text-truncate">Chasing Stats</div>
+      </a>
+    </li>
+    <li class='menu-item@(currentPage == "/Matches/GroundStats" ? " active" : "")'>
+      <a asp-controller="Matches" asp-action="GroundStats" class="menu-link">
+        <i class="menu-icon icon-base bx bx-map-pin"></i>
+        <div class="text-truncate">Ground Popularity</div>
+      </a>
+    </li>
+
+  </ul>
+
+</aside>
+<!-- / Menu -->

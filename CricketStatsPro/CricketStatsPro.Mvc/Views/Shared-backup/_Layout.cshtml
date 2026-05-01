@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CricketStatsPro.Mvc</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CricketStatsPro.Mvc.styles.css" asp-append-version="true" />
+    <style>
+        /* CSS básico para fixar o menu */
+        .sidebar {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- MENU LATERAL (Sidebar) -->
+            <nav class="col-md-2 d-none d-md-block sidebar p-3">
+                <h4 class="text-primary">CricketStatsPro</h4>
+                <ul class="nav flex-column mt-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Matches" asp-action="Index">Matches</a>
+                    </li>
+                    <!-- Adicione mais links aqui -->
+                </ul>
+            </nav>
+
+            <!-- CONTEÚDO PRINCIPAL -->
+            <main class="col-md-10 ms-sm-auto p-4">
+                @RenderBody() <!-- Aqui o C# injeta suas views (ex: a lista de jogos) -->
+            </main>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-white shadow-sm" style="width: 250px; height: 100vh;">
+        <!-- Logo / Nome do Sistema -->
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <span class="fs-4 fw-bold text-primary">CricketStatsPro</span>
+        </a>
+        <hr>
+        
+        <!-- Itens do Menu -->
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="@Url.Action("Index", "Home")" class="nav-link active d-flex align-items-center mb-1">
+                    <i class="bi bi-house-door me-3"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Matches")" class="nav-link link-dark d-flex align-items-center mb-1">
+                    <i class="bi bi-trophy me-3"></i>
+                    Matches
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark d-flex align-items-center mb-1">
+                    <i class="bi bi-graph-up me-3"></i>
+                    Statistics
+                </a>
+            </li>
+        </ul>
+        <hr>
+        
+        <!-- Rodapé do Menu (Opcional) -->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>Thomas</strong>
+            </a>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
