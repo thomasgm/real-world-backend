@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FlightAnalytics</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SkyRoute.Mvc.styles.css" asp-append-version="true" />
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i data-lucide="plane" style="color: white; width: 20px;"></i>
+                </div>
+                <a class="sidebar-brand" asp-area="" asp-controller="Home" asp-action="Index">FlightAnalytics</a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a class="nav-link-custom active" asp-controller="Home" asp-action="Index">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="plane-takeoff"></i>
+                    <span>Flights</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="briefcase"></i>
+                    <span>Airlines</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="building-2"></i>
+                    <span>Airports</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="bar-chart-3"></i>
+                    <span>Delay Analysis</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="map"></i>
+                    <span>Route Performance</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="file-text"></i>
+                    <span>Reports</span>
+                </a>
+                <a class="nav-link-custom" href="#">
+                    <i data-lucide="settings"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="text-muted small">© 2024 FlightAnalytics</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Nav -->
+            <header class="top-nav">
+                <div class="search-bar">
+                    <i data-lucide="search" style="width: 16px; color: var(--text-muted);"></i>
+                    <input type="text" placeholder="Search data...">
+                </div>
+                
+                <div class="top-nav-actions">
+                    <div class="icon-btn">
+                        <i data-lucide="bell"></i>
+                        <span class="badge-dot"></span>
+                    </div>
+                    <div class="icon-btn">
+                        <i data-lucide="maximize"></i>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                        </div>
+                        <div class="d-none d-md-block">
+                            <div style="font-size: 0.875rem; font-weight: 600;">Admin User</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Administrator</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="dashboard-container">
+                @RenderBody()
+            </div>
+
+            <footer class="mt-auto py-3 border-top bg-white px-4">
+                <div class="d-flex justify-content-between align-items-center text-muted small">
+                    <div>Flight Data Analytics System built with ASP.NET MVC</div>
+                    <div>Data updated: @DateTime.Now.ToString("MMM dd, yyyy HH:mm")</div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

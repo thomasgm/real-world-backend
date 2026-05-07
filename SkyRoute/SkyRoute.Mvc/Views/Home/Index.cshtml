@@ -1,0 +1,218 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 fw-bold mb-0">Dashboard Overview</h2>
+    <div class="d-flex gap-2">
+        <button class="btn btn-white border shadow-sm btn-sm">
+            <i data-lucide="download" class="me-1" style="width: 14px;"></i> Export
+        </button>
+        <button class="btn btn-primary btn-sm px-3">
+            <i data-lucide="plus" class="me-1" style="width: 14px;"></i> New Flight
+        </button>
+    </div>
+</div>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-title">Total Flights</div>
+                <div class="stat-value">1,234,567</div>
+            </div>
+            <div class="stat-icon" style="background: #e0e7ff; color: #4338ca;">
+                <i data-lucide="plane"></i>
+            </div>
+        </div>
+        <div class="stat-trend trend-up">
+            <i data-lucide="trending-up" style="width: 12px;"></i>
+            <span>+8.5% <span class="text-muted">vs last month</span></span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-title">Avg Delay</div>
+                <div class="stat-value">18 min</div>
+            </div>
+            <div class="stat-icon" style="background: #fef3c7; color: #b45309;">
+                <i data-lucide="clock"></i>
+            </div>
+        </div>
+        <div class="stat-trend trend-down">
+            <i data-lucide="trending-down" style="width: 12px;"></i>
+            <span>-4.2% <span class="text-muted">vs last month</span></span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-title">Cancellation Rate</div>
+                <div class="stat-value">2.35%</div>
+            </div>
+            <div class="stat-icon" style="background: #fee2e2; color: #b91c1c;">
+                <i data-lucide="x-circle"></i>
+            </div>
+        </div>
+        <div class="stat-trend trend-down">
+            <i data-lucide="trending-down" style="width: 12px;"></i>
+            <span>-0.6% <span class="text-muted">vs last month</span></span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-header">
+            <div>
+                <div class="stat-title">Peak Traffic</div>
+                <div class="stat-value">5 PM - 6 PM</div>
+            </div>
+            <div class="stat-icon" style="background: #dcfce7; color: #15803d;">
+                <i data-lucide="bar-chart"></i>
+            </div>
+        </div>
+        <div class="stat-trend trend-up">
+            <i data-lucide="users" style="width: 12px;"></i>
+            <span>68,234 <span class="text-muted">flights</span></span>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Recent Flights Table -->
+    <div class="col-lg-8">
+        <div class="card-table mt-0">
+            <div class="card-header">
+                <h3 class="card-title">Recent Flights</h3>
+                <a href="#" class="btn btn-link btn-sm text-decoration-none">View All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Flight</th>
+                            <th>Airline</th>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Delay</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-medium">AA1234</td>
+                            <td>American Airlines</td>
+                            <td>JFK</td>
+                            <td>LAX</td>
+                            <td class="text-danger">23 min</td>
+                            <td><span class="status-badge status-delayed">Delayed</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">DL5678</td>
+                            <td>Delta Airlines</td>
+                            <td>ATL</td>
+                            <td>ORD</td>
+                            <td class="text-success">On Time</td>
+                            <td><span class="status-badge status-ontime">On Time</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">UA9101</td>
+                            <td>United Airlines</td>
+                            <td>SFO</td>
+                            <td>EWR</td>
+                            <td class="text-danger">45 min</td>
+                            <td><span class="status-badge status-delayed">Delayed</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">SW1122</td>
+                            <td>Southwest</td>
+                            <td>DAL</td>
+                            <td>MIA</td>
+                            <td class="text-success">On Time</td>
+                            <td><span class="status-badge status-ontime">On Time</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-medium">AS3344</td>
+                            <td>Alaska Airlines</td>
+                            <td>SEA</td>
+                            <td>DEN</td>
+                            <td class="text-danger">12 min</td>
+                            <td><span class="status-badge status-delayed">Delayed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Top Delayed Routes -->
+    <div class="col-lg-4">
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h3 class="card-title">Top Delayed Routes</h3>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4">
+                        <div>
+                            <div class="fw-bold">LAX &rarr; JFK</div>
+                            <div class="text-muted small">Avg Delay: 45 min</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-muted" style="width: 16px;"></i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4">
+                        <div>
+                            <div class="fw-bold">ORD &rarr; MIA</div>
+                            <div class="text-muted small">Avg Delay: 38 min</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-muted" style="width: 16px;"></i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4">
+                        <div>
+                            <div class="fw-bold">ATL &rarr; LAX</div>
+                            <div class="text-muted small">Avg Delay: 35 min</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-muted" style="width: 16px;"></i>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center py-3 px-4 border-0">
+                        <button class="btn btn-outline-primary w-100 btn-sm mt-2">View All Routes</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Delay Overview (Chart Placeholder) -->
+        <div class="card shadow-sm border-0 rounded-4 mt-4">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h3 class="card-title">Delay Overview</h3>
+            </div>
+            <div class="card-body text-center py-4">
+                <div class="position-relative d-inline-block">
+                    <!-- Fake Chart Ring -->
+                    <div style="width: 120px; height: 120px; border-radius: 50%; border: 12px solid #f1f5f9; border-top-color: #3b82f6; transform: rotate(45deg);"></div>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <div class="fw-bold h5 mb-0">62%</div>
+                        <div class="text-muted" style="font-size: 0.6rem;">On Time</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-start small">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span><span class="badge rounded-circle p-1 me-1" style="background: #3b82f6;">&nbsp;</span> On Time</span>
+                        <span class="fw-bold">62.1%</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span><span class="badge rounded-circle p-1 me-1" style="background: #f59e0b;">&nbsp;</span> Delayed</span>
+                        <span class="fw-bold">30.4%</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span><span class="badge rounded-circle p-1 me-1" style="background: #ef4444;">&nbsp;</span> Cancelled</span>
+                        <span class="fw-bold">7.5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
